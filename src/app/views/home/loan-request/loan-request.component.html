@@ -94,8 +94,13 @@
           </div>
           <div fxLayout fxLayoutAlign="space-between center">
             <mat-form-field fxFlex="48%">
-              <input matInput name="corporateCurrentDebt" type="number" placeholder="Current Debt" tabindex="12" required autofocus
+                <mat-select name="corporateCurrentDebt" placeholder="Current Debt" required tabindex="12"
                 [(ngModel)]="corporateDetail.corporateCurrentDebt">
+                <mat-option [value]=50000>Less then 50,000</mat-option>
+                <mat-option [value]=75000>Less then 75,000</mat-option>
+                <mat-option [value]=100000>Less then 100,000</mat-option>
+                <mat-option [value]=150000>Less then 150,000</mat-option>
+              </mat-select>
                 <mat-hint align="end">Maximum Debt should not exceed 150,000</mat-hint>
             </mat-form-field>
             <mat-form-field fxFlex="48%">

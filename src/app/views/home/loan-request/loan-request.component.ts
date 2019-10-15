@@ -1096,6 +1096,7 @@ export class LoanRequestComponent implements OnInit {
         console.log(data);
         this.loadingProgress = false;
         this.openSuccessDialog();
+        this.documentUpload = true;
       },
       error => {
         this.loadingProgress = false;
@@ -1120,10 +1121,6 @@ export class LoanRequestComponent implements OnInit {
     dialogConfig.width = '500px';
 
     this.dialog.open(SuccessModalComponent, dialogConfig);
-
-    this.dialog.afterClosed().subscribe(result => {
-      this.documentUpload = true;
-    });
   };
 
 }
