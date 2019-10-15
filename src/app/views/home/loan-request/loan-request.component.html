@@ -1,8 +1,9 @@
 <mat-card>
   <mat-card-header>
-    <mat-card-title>New Loan Request</mat-card-title>
+    <mat-card-title *ngIf="!documentUpload">New Loan Request</mat-card-title>
+    <mat-card-title *ngIf="documentUpload">Loan Document Upload</mat-card-title>
   </mat-card-header>
-  <mat-card-content *ngIf="!registrationSuccess">
+  <mat-card-content *ngIf="!documentUpload">
     <mat-accordion>
       <mat-expansion-panel>
         <mat-expansion-panel-header>
@@ -148,8 +149,29 @@
         <b>{{ registrationFailureError }}</b></p>
       <div fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="2%" class="auth-button nav-spacer">
         <button mat-raised-button color="default" fxFlex="10%" tabindex="15">Cancel</button>
-        <button type="submit" mat-raised-button color="primary" fxFlex="10%" tabindex="14">Submit</button>
+        <button type="submit" mat-raised-button color="primary" fxFlex="10%" tabindex="14" (click)="submitDetails()">Submit</button>
       </div>
 
   </mat-card-content>
+
+  <mat-card-content *ngIf="documentUpload">
+        
+      <form fxLayoutAlign="center stretch" fxLayout="column" class="auth-form">
+          <div fxLayout fxLayoutAlign="space-between center">
+            <mat-form-field fxFlex="100%">
+              <input matInput name="name" type="text" placeholder="Select Document" tabindex="1" required autofocus
+                [(ngModel)]="providerDetail.firstName">
+            </mat-form-field>
+          </div>
+        </form>
+  
+      <p *ngIf="registrationFailure" style="color:red;text-align: center;font-size: 16px;">
+          <b>{{ registrationFailureError }}</b></p>
+        <div fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="2%" class="auth-button nav-spacer">
+          <button mat-raised-button color="default" fxFlex="10%" tabindex="15">Cancel</button>
+          <button type="submit" mat-raised-button color="primary" fxFlex="15%" tabindex="14">Upload and Submit</button>
+        </div>
+  
+    </mat-card-content>
+
 </mat-card>

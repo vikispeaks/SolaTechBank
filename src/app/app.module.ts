@@ -154,9 +154,7 @@ const appRoutes: Routes = [{
     UserManagementService
   ],
   entryComponents: [
-    InfoModalComponent,
     HelpModalComponent,
-    ContactModalComponent,
     SuccessModalComponent,
     ErrorModalComponent
   ],

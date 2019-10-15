@@ -37,6 +37,7 @@ export class LoanRequestComponent implements OnInit {
   registrationSuccess = false;
   maxDate = new Date(Date.now());
   startDate = this.maxDate;
+  documentUpload = false;
 
   //check manager register email is right format
   providerEmailFormControl = new FormControl('', [
@@ -59,8 +60,8 @@ export class LoanRequestComponent implements OnInit {
     this.startDate = this.maxDate;
   }
 
-  addProviderUser = function () {
-
+  submitDetails = function () {
+    this.documentUpload = true;
   };
 
   gotoAccountSummary = function () {
