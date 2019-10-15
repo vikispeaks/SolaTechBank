@@ -1049,6 +1049,7 @@ export class LoanRequestComponent implements OnInit {
 
   submitDetails = function () {
     this.documentUpload = true;
+    this.saveApplication();
   };
 
   gotoAccountSummary = function () {
@@ -1072,6 +1073,9 @@ export class LoanRequestComponent implements OnInit {
   };
 
   saveApplication = function () {
+
+    const mergedApplicationData = {...this.personalDetail, ...this.corporateDetail, ...this.loanDetail};
+    console.log(mergedApplicationData);
 
   };
 

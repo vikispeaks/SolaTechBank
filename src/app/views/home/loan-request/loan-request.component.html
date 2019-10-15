@@ -94,8 +94,9 @@
           </div>
           <div fxLayout fxLayoutAlign="space-between center">
             <mat-form-field fxFlex="48%">
-              <input matInput name="currentDebt" type="text" placeholder="Current Debt" tabindex="5" required autofocus
+              <input matInput name="currentDebt" type="number" placeholder="Current Debt" tabindex="5" required autofocus
                 [(ngModel)]="corporateDetail.currentDebt">
+                <mat-hint align="end">Maximum Debt should not exceed 150,000</mat-hint>
             </mat-form-field>
             <mat-form-field fxFlex="48%">
               <mat-select name="companyAge" placeholder="Company Age" required tabindex="6"
@@ -118,11 +119,12 @@
         <form fxLayoutAlign="center stretch" fxLayout="column" class="auth-form">
           <div fxLayout fxLayoutAlign="space-between center">
             <mat-form-field fxFlex="48%">
-              <input matInput name="loanAmount" type="text" placeholder="Loan Amount" tabindex="1" required autofocus
+              <input matInput name="loanAmount" type="number" placeholder="Loan Amount" tabindex="1" required autofocus
                 [(ngModel)]="loanDetail.loanAmount">
+                <mat-hint align="end">Maximum Loan Amount is 150,000</mat-hint>
             </mat-form-field>
             <mat-form-field fxFlex="48%">
-              <input matInput name="loanTerm" type="text" placeholder="Loan Term" tabindex="2" required
+              <input matInput name="loanTerm" type="number" placeholder="Loan Term" tabindex="2" required
                 [(ngModel)]="loanDetail.loanTerm">
               <mat-hint align="end">Enter Term in Months</mat-hint>
             </mat-form-field>
@@ -130,10 +132,10 @@
           <div fxLayout fxLayoutAlign="space-between center">
             <mat-form-field fxFlex="48%">
               <mat-select name="usage" placeholder="Usage" required tabindex="3" [(ngModel)]="loanDetail.usage">
-                <mat-option value="ca">Current Assets</mat-option>
-                <mat-option value="dr">Debt Restructuring</mat-option>
-                <mat-option value="ifa">Investment in Fixed Assets</mat-option>
-                <mat-option value="gc">Growth Capital</mat-option>
+                <mat-option value="Current Assets">Current Assets</mat-option>
+                <mat-option value="Debt Restructuring">Debt Restructuring</mat-option>
+                <mat-option value="Investment in Fixed Assets">Investment in Fixed Assets</mat-option>
+                <mat-option value="Growth Capital">Growth Capital</mat-option>
               </mat-select>
             </mat-form-field>
           </div>
@@ -152,17 +154,6 @@
   </mat-card-content>
 
   <mat-card-content *ngIf="documentUpload">
-
-    <!-- <form fxLayoutAlign="center stretch" fxLayout="column" class="auth-form">
-      <div fxLayout fxLayoutAlign="space-between center">
-        <mat-form-field fxFlex="100%">
-          <input matInput name="name" type="text" placeholder="Select Document" tabindex="1" required autofocus>
-        </mat-form-field>
-      </div>
-    </form>
-    <div fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="2%" class="auth-button nav-spacer">
-      <button type="submit" mat-raised-button color="primary" fxFlex="15%" tabindex="14" (click)="saveApplication()">Upload and Submit</button>
-    </div> -->
     <mat-card>
       <mat-card-content>
         <p>Upload Relevant Documents</p>
