@@ -45,11 +45,10 @@
             </mat-form-field>
             <mat-form-field fxFlex="48%" hintLabel="number without country code max length 10">
               <input matInput name="phonenumber" type="tel" placeholder="Mobile Number" maxlength="10" tabindex="5"
-                [(ngModel)]="personalDetail.phonenumber" #providerRegisterPhone
+                [(ngModel)]="personalDetail.phonenumber" #personalRegisterPhone
                 onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57"
                 required>
-              <span matPrefix>+91 - </span>
-              <mat-hint align="end">{{providerRegisterPhone.value?.length || 0}}/10</mat-hint>
+              <mat-hint align="end">{{personalRegisterPhone.value?.length || 0}}/10</mat-hint>
             </mat-form-field>
           </div>
           <div fxLayout fxLayoutAlign="space-between center">
@@ -91,8 +90,13 @@
                 [(ngModel)]="corporateDetail.legalStructure">
             </mat-form-field>
             <mat-form-field fxFlex="48%">
-              <input matInput name="lastYearRevenue" type="text" placeholder="Last Year Revenue" tabindex="4" required
+                <mat-select name="lastYearRevenue" placeholder="Last Year Revenue" required tabindex="6"
                 [(ngModel)]="corporateDetail.lastYearRevenue">
+                <mat-option value="50">50,000 +</mat-option>
+                <mat-option value="100">100,000 +</mat-option>
+                <mat-option value="500">500,000 +</mat-option>
+                <mat-option value="1000">1,000,000 +</mat-option>
+              </mat-select>
             </mat-form-field>
           </div>
           <div fxLayout fxLayoutAlign="space-between center">
@@ -127,6 +131,7 @@
             <mat-form-field fxFlex="48%">
               <input matInput name="loanTerm" type="text" placeholder="Loan Term" tabindex="2" required
                 [(ngModel)]="loanDetail.loanTerm">
+                <mat-hint align="end">Enter Term in Months</mat-hint>
             </mat-form-field>
           </div>
           <div fxLayout fxLayoutAlign="space-between center">
@@ -168,8 +173,8 @@
     <p *ngIf="registrationFailure" style="color:red;text-align: center;font-size: 16px;">
       <b>{{ registrationFailureError }}</b></p>
     <div fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="2%" class="auth-button nav-spacer">
-      <button mat-raised-button color="default" fxFlex="10%" tabindex="15">Cancel</button>
-      <button type="submit" mat-raised-button color="primary" fxFlex="15%" tabindex="14">Upload and Submit</button>
+      <button mat-raised-button color="default" fxFlex="10%" tabindex="15" (click)="resetApplication()">Reset</button>
+      <button type="submit" mat-raised-button color="primary" fxFlex="15%" tabindex="14" (click)="saveApplication()">Upload and Submit</button>
     </div>
 
   </mat-card-content>

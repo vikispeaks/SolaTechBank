@@ -1016,8 +1016,6 @@ export class LoanRequestComponent implements OnInit {
   }
 ];
 
-  loadingProgress = false;
-  registrationSuccess = false;
   maxDate = new Date(Date.now());
   startDate = this.maxDate;
   documentUpload = false;
@@ -1028,8 +1026,6 @@ export class LoanRequestComponent implements OnInit {
     Validators.email,
   ]);
 
-  registrationFailure = false;
-  registrationFailureError = '';
 
   constructor(
     private router: Router,
@@ -1050,6 +1046,16 @@ export class LoanRequestComponent implements OnInit {
   gotoAccountSummary = function () {
     this.router.navigateByUrl('/home/account-summary');
   };
+
+  resetApplication = function () {
+
+    this.router.navigateByUrl('/home');
+    
+  }
+
+  saveApplication = function () {
+
+  }
 
   // openErrorDialog = function (error: string) {
   //   const dialogConfig = new MatDialogConfig();
