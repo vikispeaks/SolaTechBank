@@ -111,12 +111,6 @@ import {
   HelpModalComponent
 } from './components/modals/help-modal/help-modal.component';
 import {
-  AuthService
-} from './services/auth/auth.service';
-import {
-  UserManagementService
-} from './services/user-management/user-management.service';
-import {
   SuccessModalComponent
 } from './components/modals/success-modal/success-modal.component';
 import {
@@ -210,7 +204,6 @@ const appRoutes: Routes = [{
     MatListModule
   ],
   providers: [
-    UserManagementService
   ],
   entryComponents: [
     HelpModalComponent,
