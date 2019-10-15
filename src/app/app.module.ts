@@ -56,14 +56,8 @@ import {
   HomeComponent
 } from './views/home/home.component';
 import {
-  InfoModalComponent
-} from './components/modals/info-modal/info-modal.component';
-import {
   HelpModalComponent
 } from './components/modals/help-modal/help-modal.component';
-import {
-  ContactModalComponent
-} from './components/modals/contact-modal/contact-modal.component';
 import {
   AuthService
 } from './services/auth/auth.service';
@@ -113,9 +107,7 @@ const appRoutes: Routes = [{
     AppComponent,
     AuthComponent,
     HomeComponent,
-    InfoModalComponent,
     HelpModalComponent,
-    ContactModalComponent,
     SuccessModalComponent,
     ErrorModalComponent,
     LoanRequestComponent,
