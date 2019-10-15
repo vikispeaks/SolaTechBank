@@ -12,30 +12,16 @@ export class OfferResponseService {
 
   constructor(private http: HttpClient) { }
 
-  getApplicationStatus(token: any) {
+  repondToOffer(responseData: any) {
 
     const httpOptions = {
       headers: new HttpHeaders({
-        'Accept': 'application/json',
-        'Authorization': 'Bearer ' + token
-      })
-    };
-
-    return this.http.get<any[]>(environment.apiSolaTech + '/applicationID', httpOptions);
-  }
-
-  sendOfferResponse(providerIdDetail: any, token: any) {
-
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + token
+        'Content-Type': 'application/json'
       })
     };
 
     // tslint:disable-next-line:max-line-length
-    return this.http.post(environment.apiSolaTech + '/api/v1/users/add-provider-identity', providerIdDetail, httpOptions);
+    return this.http.post(environment.apiSolaTech + 'loanapplication', responseData, httpOptions);
   }
-
 
 }

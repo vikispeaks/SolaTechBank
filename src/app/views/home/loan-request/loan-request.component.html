@@ -14,31 +14,31 @@
         <form fxLayoutAlign="center stretch" fxLayout="column" class="auth-form">
           <div fxLayout fxLayoutAlign="space-between center">
             <mat-form-field fxFlex="48%">
-              <input matInput name="name" type="text" placeholder="Full Name" tabindex="1" required autofocus
-                [(ngModel)]="personalDetail.name">
+              <input matInput name="representiveName" type="text" placeholder="Full Name" tabindex="1" required autofocus
+                [(ngModel)]="personalDetail.representiveName">
             </mat-form-field>
 
             <mat-form-field fxFlex="48%" appearance="standard">
-              <input matInput name="dob" [matDatepicker]="picker" placeholder="DOB" [max]="startDate" required
-                tabindex="4" [(ngModel)]="personalDetail.dob" disabled>
+              <input matInput name="representiveDateOfBirth" [matDatepicker]="picker" placeholder="DOB" tabindex="2" [max]="startDate" required
+                tabindex="4" [(ngModel)]="personalDetail.representiveDateOfBirth" disabled>
               <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
               <mat-datepicker startView="multi-year" disabled="false" touchUi #picker></mat-datepicker>
             </mat-form-field>
           </div>
           <div fxLayout fxLayoutAlign="space-between center">
             <mat-form-field fxFlex="100%">
-              <input matInput name="address" type="text" placeholder="Address" tabindex="2" required
-                [(ngModel)]="personalDetail.address">
+              <input matInput name="representiveAddress" type="text" placeholder="Address" tabindex="3" required
+                [(ngModel)]="personalDetail.representiveAddress">
             </mat-form-field>
           </div>
           <div fxLayout fxLayoutAlign="space-between center">
             <mat-form-field fxFlex="48%">
-              <input matInput name="email" type="email" placeholder="Email Address" tabindex="1" required autofocus
-                [(ngModel)]="personalDetail.email">
+              <input matInput name="representiveEmail" type="email" placeholder="Email Address" tabindex="4" required autofocus
+                [(ngModel)]="personalDetail.representiveEmail">
             </mat-form-field>
             <mat-form-field fxFlex="48%" hintLabel="number without country code max length 10">
-              <input matInput name="phonenumber" type="tel" placeholder="Mobile Number" maxlength="10" tabindex="5"
-                [(ngModel)]="personalDetail.phonenumber" #personalRegisterPhone
+              <input matInput name="representivePhoneNumber" type="tel" placeholder="Mobile Number" maxlength="10" tabindex="5"
+                [(ngModel)]="personalDetail.representivePhoneNumber" #personalRegisterPhone
                 onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57"
                 required>
               <mat-hint align="end">{{personalRegisterPhone.value?.length || 0}}/10</mat-hint>
@@ -46,16 +46,16 @@
           </div>
           <div fxLayout fxLayoutAlign="space-between center">
             <mat-form-field fxFlex="48%">
-              <mat-select name="citizenship" placeholder="Citizenship" required tabindex="7"
-                [(ngModel)]="personalDetail.citizenship">
+              <mat-select name="representiveCitizenShip" placeholder="Citizenship" required tabindex="6"
+                [(ngModel)]="personalDetail.representiveCitizenShip">
                 <mat-option *ngFor="let country of countryList" [value]="country.code">
                   {{country.name}}
                 </mat-option>
               </mat-select>
             </mat-form-field>
             <mat-form-field fxFlex="48%">
-              <input matInput name="passport" type="text" placeholder="Passport" tabindex="9" required
-                [(ngModel)]="personalDetail.passport">
+              <input matInput name="representivePassportNumber" type="text" placeholder="Passport" tabindex="7" required
+                [(ngModel)]="personalDetail.representivePassportNumber">
             </mat-form-field>
           </div>
         </form>
@@ -69,22 +69,22 @@
         <form fxLayoutAlign="center stretch" fxLayout="column" class="auth-form" (keyup.enter)="addProviderUser()">
           <div fxLayout fxLayoutAlign="space-between center">
             <mat-form-field fxFlex="48%">
-              <input matInput name="corporatename" type="text" placeholder="Full Name" tabindex="1" required autofocus
-                [(ngModel)]="corporateDetail.corporatename">
+              <input matInput name="corporateName" type="text" placeholder="Full Name" tabindex="8" required autofocus
+                [(ngModel)]="corporateDetail.corporateName">
             </mat-form-field>
             <mat-form-field fxFlex="48%">
-              <input matInput name="corpAddress" type="text" placeholder="Address" tabindex="2" required
-                [(ngModel)]="corporateDetail.corpAddress">
+              <input matInput name="corporateAddress" type="text" placeholder="Address" tabindex="9" required
+                [(ngModel)]="corporateDetail.corporateAddress">
             </mat-form-field>
           </div>
           <div fxLayout fxLayoutAlign="space-between center">
             <mat-form-field fxFlex="48%">
-              <input matInput name="legalStructure" type="text" placeholder="Legal Structure" tabindex="3" required
-                autofocus [(ngModel)]="corporateDetail.legalStructure">
+              <input matInput name="corporateLegalStructure" type="text" placeholder="Legal Structure" tabindex="10" required
+                autofocus [(ngModel)]="corporateDetail.corporateLegalStructure">
             </mat-form-field>
             <mat-form-field fxFlex="48%">
-              <mat-select name="lastYearRevenue" placeholder="Last Year Revenue" required tabindex="6"
-                [(ngModel)]="corporateDetail.lastYearRevenue">
+              <mat-select name="corporateRevenueLastYear" placeholder="Last Year Revenue" required tabindex="11"
+                [(ngModel)]="corporateDetail.corporateRevenueLastYear">
                 <mat-option value="50">50,000 +</mat-option>
                 <mat-option value="100">100,000 +</mat-option>
                 <mat-option value="500">500,000 +</mat-option>
@@ -94,17 +94,17 @@
           </div>
           <div fxLayout fxLayoutAlign="space-between center">
             <mat-form-field fxFlex="48%">
-              <input matInput name="currentDebt" type="number" placeholder="Current Debt" tabindex="5" required autofocus
-                [(ngModel)]="corporateDetail.currentDebt">
+              <input matInput name="corporateCurrentDebt" type="number" placeholder="Current Debt" tabindex="12" required autofocus
+                [(ngModel)]="corporateDetail.corporateCurrentDebt">
                 <mat-hint align="end">Maximum Debt should not exceed 150,000</mat-hint>
             </mat-form-field>
             <mat-form-field fxFlex="48%">
-              <mat-select name="companyAge" placeholder="Company Age" required tabindex="6"
-                [(ngModel)]="corporateDetail.companyAge">
-                <mat-option value="2">2+ Years</mat-option>
-                <mat-option value="5">5+ Years</mat-option>
-                <mat-option value="10">10+ Years</mat-option>
-                <mat-option value="15">15+ Years</mat-option>
+              <mat-select name="corporateAge" placeholder="Company Age" required tabindex="13"
+                [(ngModel)]="corporateDetail.corporateAge">
+                <mat-option [value]=2>2+ Years</mat-option>
+                <mat-option [value]=5>5+ Years</mat-option>
+                <mat-option [value]=10>10+ Years</mat-option>
+                <mat-option [value]=15>15+ Years</mat-option>
               </mat-select>
             </mat-form-field>
           </div>
@@ -119,19 +119,19 @@
         <form fxLayoutAlign="center stretch" fxLayout="column" class="auth-form">
           <div fxLayout fxLayoutAlign="space-between center">
             <mat-form-field fxFlex="48%">
-              <input matInput name="loanAmount" type="number" placeholder="Loan Amount" tabindex="1" required autofocus
-                [(ngModel)]="loanDetail.loanAmount">
+              <input matInput name="amount" type="number" placeholder="Loan Amount" tabindex="14" required autofocus
+                [(ngModel)]="loanDetail.amount">
                 <mat-hint align="end">Maximum Loan Amount is 150,000</mat-hint>
             </mat-form-field>
             <mat-form-field fxFlex="48%">
-              <input matInput name="loanTerm" type="number" placeholder="Loan Term" tabindex="2" required
-                [(ngModel)]="loanDetail.loanTerm">
+              <input matInput name="term" type="number" placeholder="Loan Term" tabindex="15" required
+                [(ngModel)]="loanDetail.term">
               <mat-hint align="end">Enter Term in Months</mat-hint>
             </mat-form-field>
           </div>
           <div fxLayout fxLayoutAlign="space-between center">
             <mat-form-field fxFlex="48%">
-              <mat-select name="usage" placeholder="Usage" required tabindex="3" [(ngModel)]="loanDetail.usage">
+              <mat-select name="puropse" placeholder="Usage" required tabindex="16" [(ngModel)]="loanDetail.puropse">
                 <mat-option value="Current Assets">Current Assets</mat-option>
                 <mat-option value="Debt Restructuring">Debt Restructuring</mat-option>
                 <mat-option value="Investment in Fixed Assets">Investment in Fixed Assets</mat-option>
@@ -146,8 +146,8 @@
     <p *ngIf="registrationFailure" style="color:red;text-align: center;font-size: 16px;">
       <b>{{ registrationFailureError }}</b></p>
     <div fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="2%" class="auth-button nav-spacer">
-      <button mat-raised-button color="default" fxFlex="10%" tabindex="15">Cancel</button>
-      <button type="submit" mat-raised-button color="primary" fxFlex="10%" tabindex="14"
+      <button mat-raised-button color="default" fxFlex="10%" tabindex="18">Cancel</button>
+      <button type="submit" mat-raised-button color="primary" fxFlex="10%" tabindex="17"
         (click)="submitDetails()">Submit</button>
     </div>
 

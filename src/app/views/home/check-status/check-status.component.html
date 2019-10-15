@@ -9,10 +9,10 @@
           <form fxLayoutAlign="center stretch" fxLayout="column" class="auth-form">
               <div fxLayout fxLayoutAlign="space-between center">
                 <mat-form-field fxFlex="68%">
-                  <input matInput name="name" type="text" placeholder="Application ID" tabindex="1" required autofocus>
+                  <input matInput name="applicationID" type="text" placeholder="Application ID" tabindex="1" required autofocus [(ngModel)]="applicationID">
                 </mat-form-field>
         
-                <button type="submit" mat-raised-button color="primary" fxFlex="30%" tabindex="14">Get Status</button>
+                <button type="submit" mat-raised-button color="primary" fxFlex="30%" tabindex="2" (click)="getApplicationStatus()">Get Status</button>
         
               </div>
             </form>
@@ -21,21 +21,20 @@
   </mat-card-content>
 
 
-  <mat-card class="mat-elevation-z0">
+  <mat-card class="mat-elevation-z0" *ngIf="applicationStatusAvailable">
     <mat-card-title>
       Application Status - ID - 000000000
     </mat-card-title>
     <mat-card-content>
-      The Status is In-progress
 
       <mat-list>
-        <mat-list-item>Loan Amount</mat-list-item>
+        <mat-list-item>Loan Amount - <h3>{{applicationStatusDetail.amount}}</h3></mat-list-item>
         <mat-divider></mat-divider>
-        <mat-list-item>Tenure</mat-list-item>
+        <mat-list-item>Corporate Name - <h3>{{applicationStatusDetail.corporateName}}</h3></mat-list-item>
         <mat-divider></mat-divider>
-        <mat-list-item>Interest Rate</mat-list-item>
+        <mat-list-item>Representative Name - <h3>{{applicationStatusDetail.representativeName}}</h3></mat-list-item>
         <mat-divider></mat-divider>
-        <mat-list-item>EMI</mat-list-item>
+        <mat-list-item>Status - <h3>{{applicationStatusDetail.statusName}}</h3></mat-list-item>
       </mat-list>
 
     </mat-card-content>
@@ -46,7 +45,7 @@
       </div>
   </mat-card>
 
-  <mat-card class="mat-elevation-z0">
+  <mat-card class="mat-elevation-z0" *ngIf="loanStatusAvailabled">
     <mat-card-title>
       Loan Status - ID - 000000000
     </mat-card-title>

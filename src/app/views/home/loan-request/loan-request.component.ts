@@ -21,6 +21,14 @@ import {
 import {
   ErrorStateMatcher
 } from '@angular/material/core';
+import {
+  ApplyLoanService
+} from 'src/app/services/home/apply-loan/apply-loan.service';
+import {
+  DatePipe
+} from '@angular/common';
+import { ErrorModalComponent } from 'src/app/components/modals/error-modal/error-modal.component';
+import { SuccessModalComponent } from 'src/app/components/modals/success-modal/success-modal.component';
 
 @Component({
   selector: 'app-loan-request',
@@ -30,28 +38,29 @@ import {
 export class LoanRequestComponent implements OnInit {
 
   personalDetail = {
-    name: '',
-    dob: '',
-    address: '',
-    email: '',
-    phonenumber: '',
-    citizenship: '',
-    passport: ''
+    representiveName: '',
+    representiveDateOfBirth: '',
+    representiveAddress: '',
+    representiveEmail: '',
+    representivePhoneNumber: '',
+    representiveCitizenShip: '',
+    representivePassportNumber: ''
   };
 
   corporateDetail = {
-    corporatename: '',
-    corpAddress: '',
-    currentDebt: '',
-    companyAge: '',
-    legalStructure: '',
-    lastYearRevenue: ''
+    corporateName: '',
+    corporateAddress: '',
+    corporateCurrentDebt: '',
+    corporateAge: '',
+    corporateLegalStructure: '',
+    corporateRevenueLastYear: '',
+    corporateFinancialStatement: 'string'
   };
 
   loanDetail = {
-    loanAmount: '',
-    loanTerm: '',
-    usage: ''
+    amount: '',
+    term: '',
+    puropse: ''
   };
 
   fileData: File = null;
@@ -1038,7 +1047,9 @@ export class LoanRequestComponent implements OnInit {
   constructor(
     private router: Router,
     private localStorage: LocalStorage,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private applyLoanService: ApplyLoanService,
+    public datepipe: DatePipe
   ) {}
 
   ngOnInit() {
@@ -1048,7 +1059,6 @@ export class LoanRequestComponent implements OnInit {
   }
 
   submitDetails = function () {
-    this.documentUpload = true;
     this.saveApplication();
   };
 
@@ -1074,22 +1084,47 @@ export class LoanRequestComponent implements OnInit {
 
   saveApplication = function () {
 
-    const mergedApplicationData = {...this.personalDetail, ...this.corporateDetail, ...this.loanDetail};
-    console.log(mergedApplicationData);
+    const mergedApplicationData = {
+      ...this.personalDetail,
+      ...this.corporateDetail,
+      ...this.loanDetail
+    };
+    mergedApplicationData.representiveDateOfBirth = this.datepipe.transform(mergedApplicationData.representiveDateOfBirth, 'yyyy-MM-dd');
+
+    this.applyLoanService.requestLoan(mergedApplicationData).subscribe(
+      data => {
+        console.log(data);
+        this.loadingProgress = false;
+        this.openSuccessDialog();
+      },
+      error => {
+        this.loadingProgress = false;
+        this.openErrorDialog();
+      }
+    );
+
 
   };
 
-  // openErrorDialog = function (error: string) {
-  //   const dialogConfig = new MatDialogConfig();
+  openErrorDialog = function () {
+    const dialogConfig = new MatDialogConfig();
 
-  //   dialogConfig.width = '500px';
+    dialogConfig.width = '500px';
 
-  //   dialogConfig.data = {
-  //     error: error
-  //   };
+    this.dialog.open(ErrorModalComponent, dialogConfig);
+  };
 
-  //   this.dialog.open(ErrorDialogComponent, dialogConfig);
-  // };
+  openSuccessDialog = function () {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.width = '500px';
+
+    this.dialog.open(SuccessModalComponent, dialogConfig);
+
+    this.dialog.afterClosed().subscribe(result => {
+      this.documentUpload = true;
+    });
+  };
 
 }
 

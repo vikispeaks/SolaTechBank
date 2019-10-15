@@ -12,16 +12,15 @@ export class ApplyLoanService {
 
   constructor(private http: HttpClient) { }
 
-  getApplicationStatus(token: any) {
+  requestLoan(loanDetails: any) {
 
     const httpOptions = {
       headers: new HttpHeaders({
-        'Accept': 'application/json',
-        'Authorization': 'Bearer ' + token
+        'Content-Type': 'application/json'
       })
     };
 
-    return this.http.get<any[]>(environment.apiSolaTech + '/applicationID', httpOptions);
+    // tslint:disable-next-line:max-line-length
+    return this.http.post(environment.apiSolaTech + 'loanapplication', loanDetails, httpOptions);
   }
-
 }

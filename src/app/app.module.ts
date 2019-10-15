@@ -138,6 +138,8 @@ import {
 import {
   UploadFileService
 } from './services/home/upload-file/upload-file.service';
+import { OfferResponseService } from './services/home/offer-response/offer-response.service';
+import { DatePipe } from '@angular/common';
 
 const appRoutes: Routes = [{
     path: '',
@@ -221,7 +223,9 @@ const appRoutes: Routes = [{
   providers: [
     ApplyLoanService,
     CheckStatusService,
-    UploadFileService
+    UploadFileService,
+    OfferResponseService,
+    DatePipe
   ],
   entryComponents: [
     HelpModalComponent,
