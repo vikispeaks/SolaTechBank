@@ -17,13 +17,49 @@
     </form>
   </mat-card-content>
 
-<mat-card>
-  <mat-card-title>
-    Application ID - 000000000
-  </mat-card-title>
-  <mat-card-content>
-    The Status is In-progress
-  </mat-card-content>
+
+  <mat-card class="mat-elevation-z0">
+    <mat-card-title>
+      Application Status - ID - 000000000
+    </mat-card-title>
+    <mat-card-content>
+      The Status is In-progress
+
+      <mat-list>
+        <mat-list-item>Loan Amount</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>Tenure</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>Interest Rate</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>EMI</mat-list-item>
+      </mat-list>
+
+    </mat-card-content>
+
+    <div fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="2%" class="auth-button nav-spacer">
+        <button mat-raised-button color="default" fxFlex="10%" tabindex="15">Reject Offer</button>
+        <button type="submit" mat-raised-button color="primary" fxFlex="15%" tabindex="14">Accept Offer</button>
+      </div>
+  </mat-card>
+
+  <mat-card class="mat-elevation-z0">
+    <mat-card-title>
+      Loan Status - ID - 000000000
+    </mat-card-title>
+    <mat-card-content>
+      <mat-list>
+        <mat-list-item>Loan Amount</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>Tenure</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>Interest Rate</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>EMI</mat-list-item>
+      </mat-list>
+
+    </mat-card-content>
+
   </mat-card>
 
 </mat-card>

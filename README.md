@@ -1,5 +1,7 @@
 # SolaTechBank
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/aeee6d9853fe4c93b2f6169ddcfba8de)](https://www.codacy.com/manual/vign.ran/SolaTechBank?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=vikispeaks/SolaTechBank&amp;utm_campaign=Badge_Grade)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.
 
 ## Development server
