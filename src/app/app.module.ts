@@ -124,6 +124,9 @@ import {
   CheckStatusComponent
 } from './views/home/check-status/check-status.component';
 import { MatListModule } from '@angular/material';
+import { ApplyLoanService } from './services/home/apply-loan/apply-loan.service';
+import { CheckStatusService } from './services/home/check-status/check-status.service';
+import { UploadFileService } from './services/home/upload-file/upload-file.service';
 
 const appRoutes: Routes = [{
     path: '',
@@ -204,6 +207,9 @@ const appRoutes: Routes = [{
     MatListModule
   ],
   providers: [
+    ApplyLoanService,
+    CheckStatusService,
+    UploadFileService
   ],
   entryComponents: [
     HelpModalComponent,
