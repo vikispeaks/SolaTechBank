@@ -97,9 +97,6 @@ import {
 import {
   FlexLayoutModule
 } from '@angular/flex-layout';
-import {
-  MatFileUploadModule
-} from 'angular-material-fileupload';
 
 import {
   AppComponent
@@ -217,8 +214,7 @@ const appRoutes: Routes = [{
     MatChipsModule,
     MatExpansionModule,
     MatDividerModule,
-    MatListModule,
-    MatFileUploadModule
+    MatListModule
   ],
   providers: [
     ApplyLoanService,
