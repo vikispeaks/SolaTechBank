@@ -1,0 +1,10 @@
+---
+applications:
+- name: sola-tech-bank
+  memory: 1G
+  instances: 1
+  path: ./dist
+  buildpack: https://github.com/cloudfoundry/staticfile-buildpack
+
+
+

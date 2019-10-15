@@ -1,0 +1,63 @@
+$auth-bg-gradient-start: #aaaaaa;
+$auth-bg-gradient-end: #aaaaaa;
+$auth-bg-gradient-mid: #cccccc;
+$auth-card-gradient-start: #66dacd;
+$auth-card-gradient-end: #21b4a4;
+$auth-name-title-text: #393c41;
+
+.auth-container {
+  // background-image: radial-gradient(50% 52%, $auth-bg-gradient-start 50%, $auth-bg-gradient-end 99%);
+  background: $auth-bg-gradient-start;
+  background: -moz-radial-gradient(center, ellipse cover, $auth-bg-gradient-start 0%, $auth-bg-gradient-mid 50%, $auth-bg-gradient-end 100%);
+  background: -webkit-radial-gradient(center, ellipse cover, $auth-bg-gradient-start 0%, $auth-bg-gradient-mid 50%, $auth-bg-gradient-end 100%);
+  background: radial-gradient(ellipse at center, $auth-bg-gradient-start 0%, $auth-bg-gradient-mid 50%, $auth-bg-gradient-end 100%);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.auth-background {
+  background-image: url('../../../assets/img/eraser_board_image.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100% !important;
+}
+
+.auth-context {
+    min-width: 30%;
+    font-weight: 600;
+    max-width: 40%;
+}
+
+.auth-card {
+  width: 85%;
+  margin: 0 auto;
+  border-width: 6px 0 0;
+  border-style: solid;
+  border-image-source: linear-gradient(90deg, $auth-card-gradient-start 0%, $auth-card-gradient-end 100%);
+  border-image-slice: 20;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+::ng-deep .tab-header-text mat-tab-header .mat-tab-label-container .mat-tab-list .mat-tab-labels .mat-tab-label .mat-tab-label-content {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.auth-form {
+    margin-top: 30px;
+  mat-form-field,
+  .auth-link {
+    margin-bottom: 15px;
+  }
+}
+
+.auth-footer {
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+  font-family: 'Centrale-sans';
+  font-size: 0.85em;
+  color: white;
+}

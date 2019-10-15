@@ -1,0 +1,80 @@
+::ng-deep .mat-menu-panel.custom-menu .mat-menu-content .mat-menu-item {
+  font-size: 14px;
+}
+
+.mat-toolbar.mat-primary.header-custom {
+  // background: linear-gradient(90deg, #253648, #445E7B, #253648); // box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.6);
+  background-image: url('../../../assets/img/eraser_board_image.png');
+  background-position: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  box-shadow: none;
+}
+
+.menu-spacer {
+  margin-left: 2%;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.nav-spacer {
+  margin-top: 67px;
+}
+
+.mat-form-field {
+  font-size: 14px;
+}
+
+.philips-font {
+  position: fixed;
+  top: 0;
+}
+
+mat-sidenav {
+  width: 200px;
+  top: 60px;
+
+  .sidenav-list {
+    padding-top: 20px;
+    button {
+      padding: 10px 0;
+      font-size: 1.05em;
+    }
+  }
+}
+
+.example-icon-menu {
+  border-radius: 0px;
+}
+
+.username-menu {
+  font-size: 0.8em; 
+  &.active-menu-item {
+    background: white;
+    color: #253648;
+  }
+}
+
+.header-custom {
+  &--title {
+    cursor: pointer;
+    img {
+      vertical-align: bottom;
+      margin-right: 10px;
+    }
+  }
+  .mat-toolbar-row {
+    .mat-select {
+      background: white;
+      padding: 0% 0.5%;
+      border-radius: 2px;
+      font-size: 13px;
+    }
+  }
+}
+

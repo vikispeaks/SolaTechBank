@@ -1,0 +1,13 @@
+@import "./base/typography";
+@import "./components/buttons.scss";
+
+$custom-typography: mat-typography-config(
+  $font-family: 'Raleway'
+);
+
+// Set the colors to blue and amber
+// $ag-mat-primary: #2196F3; // blue-500
+// $ag-mat-accent: #FFD740; // amber-A200
+
+// Import the ag-Grid material theme
+// @import '~ag-grid/src/styles/ag-theme-material';

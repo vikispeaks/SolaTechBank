@@ -1,0 +1,113 @@
+<div class="auth-container" fxLayout="row" fxLayoutAlign="start stretch">
+  <div class="auth-background" fxLayout="column" fxLayoutAlign="center center">
+    <div class="auth-context">
+      <mat-card class="auth-card">
+        <mat-card-content fxLayout="column" fxLayoutAlign="center stretch">
+
+          <div fxLayout="row" fxLayoutAlign="center center" class="auth-logo">
+            <img fxFlex="45%" src="../../../assets/img/logo.png">
+          </div>
+
+          <mat-tab-group mat-stretch-tabs dynamicHeight class="tab-header-text">
+
+            <!-- Signin -->
+            <mat-tab label="Sign In" *ngIf="!isForgotPassword && !isChangePassword">
+              <form fxLayoutAlign="center stretch" fxLayout="column" class="auth-form" (keyup.enter)="loginUser()">
+                <div fxLayout fxLayoutAlign="center center">
+                  <mat-form-field fxFlex="100%">
+                    <input matInput name="userName" type="email" placeholder="Email" tabindex="1" autofocus
+                      [(ngModel)]="userDetail.userName" required [formControl]="loginEmailFormControl"
+                      [errorStateMatcher]="matcher">
+                    <mat-error
+                      *ngIf="loginEmailFormControl.hasError('email') && !loginEmailFormControl.hasError('required')">
+                      Please enter a valid email address
+                    </mat-error>
+                    <mat-error *ngIf="loginEmailFormControl.hasError('required')">
+                      Email is <strong>required</strong>
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div fxLayout fxLayoutAlign="center center">
+                  <mat-form-field fxFlex="100%">
+                    <input matInput name="password" [type]="hide ? 'password' : 'text'" placeholder="Password"
+                      [(ngModel)]="userDetail.password" tabindex="2" required>
+                    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+                  </mat-form-field>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="center" class="auth-button">
+                  <button type="submit" mat-raised-button color="primary" fxFlex="50%" tabindex="3"
+                    (click)="loginUser()">Log
+                    In</button>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="center">
+                  <p *ngIf="!validUser" style="color:red">{{ loginUserFailure }}</p>
+                </div>
+              </form>
+            </mat-tab>
+
+            <!-- Registration -->
+            <mat-tab label="Register" *ngIf="!isForgotPassword && !isChangePassword">
+              <form fxLayoutAlign="center stretch" fxLayout="column" class="auth-form" (keyup.enter)="registerUser()"
+                *ngIf="!registrationSuccess">
+                <div fxLayout fxLayoutAlign="space-between center">
+                  <mat-form-field fxFlex="48%">
+                    <input matInput name="firstname" type="text" placeholder="First Name" tabindex="1" required
+                      autofocus [(ngModel)]="userRegistrationDetail.firstName">
+                  </mat-form-field>
+                  <mat-form-field fxFlex="48%">
+                    <input matInput name="lastname" type="text" placeholder="Last Name" tabindex="2"
+                      [(ngModel)]="userRegistrationDetail.lastName">
+                  </mat-form-field>
+                </div>
+                <div fxLayout fxLayoutAlign="center center">
+                  <mat-form-field fxFlex="100%">
+                    <input matInput name="userName" type="email" placeholder="Email" tabindex="3"
+                      [(ngModel)]="userRegistrationDetail.userName" [formControl]="registerEmailFormControl"
+                      [errorStateMatcher]="matcher" required>
+                    <mat-error
+                      *ngIf="registerEmailFormControl.hasError('email') && !registerEmailFormControl.hasError('required')">
+                      Please enter a valid email address
+                    </mat-error>
+                    <mat-error *ngIf="registerEmailFormControl.hasError('required')">
+                      Email is <strong>required</strong>
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div fxLayout fxLayoutAlign="center center">
+                  <mat-form-field fxFlex="100%" hintLabel="password length must be greater than 8">
+                    <input matInput name="password" type="password" placeholder="Password" tabindex="4"
+                      [(ngModel)]="userRegistrationDetail.password" [type]="hide ? 'password' : 'text'" required>
+                    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+                  </mat-form-field>
+                </div>
+                <div fxLayout fxLayoutAlign="space-between center">
+                  <mat-form-field fxFlex="48%" appearance="standard">
+                    <input matInput name="mobilenumber" type="tel" maxlength="10" placeholder="Mobile Number"
+                      tabindex="5" #registerPhone
+                      onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57"
+                      required [(ngModel)]="userRegistrationDetail.phoneNumber">
+                    <span matPrefix>+91 - </span>
+                    <mat-hint align="end">{{registerPhone.value?.length || 0}}/10</mat-hint>
+                  </mat-form-field>
+                  <mat-form-field fxFlex="48%" appearance="standard">
+                    <input matInput name="dob" [matDatepicker]="picker" placeholder="DOB" [max]="startDate" required
+                      tabindex="6" [(ngModel)]="userRegistrationDetail.dob" disabled>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker startView="multi-year" disabled="false" touchUi #picker></mat-datepicker>
+                  </mat-form-field>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="center" class="auth-button" (click)="registerUser()">
+                  <button type="submit" mat-raised-button color="primary" fxFlex="50%" tabindex="8">Register</button>
+                </div>
+              </form>
+              <p *ngIf="registrationSuccess">You have successfully registered.</p>
+              <p *ngIf="registrationFailure" style="color:red">{{ registrationFailureError }}</p>
+            </mat-tab>
+
+          </mat-tab-group>
+        </mat-card-content>
+        <mat-progress-bar mode="indeterminate" *ngIf="loadingProgress"></mat-progress-bar>
+      </mat-card>
+    </div>
+  </div>
+</div>

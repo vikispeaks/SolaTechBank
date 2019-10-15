@@ -1,0 +1,155 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>New Loan Request</mat-card-title>
+  </mat-card-header>
+  <mat-card-content *ngIf="!registrationSuccess">
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Personal Details
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <form fxLayoutAlign="center stretch" fxLayout="column" class="auth-form" (keyup.enter)="addProviderUser()">
+          <div fxLayout fxLayoutAlign="space-between center">
+            <mat-form-field fxFlex="48%">
+              <input matInput name="name" type="text" placeholder="Full Name" tabindex="1" required autofocus
+                [(ngModel)]="providerDetail.firstName">
+            </mat-form-field>
+
+            <mat-form-field fxFlex="48%" appearance="standard">
+                <input matInput name="dob" [matDatepicker]="picker" placeholder="DOB" [max]="startDate" required
+                  tabindex="4" [(ngModel)]="providerDetail.dob" disabled>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker startView="multi-year" disabled="false" touchUi #picker></mat-datepicker>
+              </mat-form-field>
+          </div>
+          <div fxLayout fxLayoutAlign="space-between center">
+              <mat-form-field fxFlex="100%">
+                  <input matInput name="address" type="text" placeholder="Address" tabindex="2" required
+                    [(ngModel)]="providerDetail.userName">
+                  <!-- <mat-error
+                        *ngIf="providerEmailFormControl.hasError('email') && !providerEmailFormControl.hasError('required')">
+                        Please enter a valid email address
+                      </mat-error> -->
+                  <!-- <mat-error *ngIf="providerEmailFormControl.hasError('required')">
+                        Email is <strong>required</strong>
+                      </mat-error> -->
+                </mat-form-field>
+          </div>
+          <div fxLayout fxLayoutAlign="space-between center">
+            <mat-form-field fxFlex="48%">
+              <input matInput name="name" type="email" placeholder="Email Address" tabindex="1" required autofocus
+                [(ngModel)]="providerDetail.firstName">
+            </mat-form-field>
+            <mat-form-field fxFlex="48%" hintLabel="number without country code max length 10">
+              <input matInput name="phoneNumber" type="tel" placeholder="Mobile Number" maxlength="10" tabindex="5"
+                [(ngModel)]="providerDetail.phoneNumber" #providerRegisterPhone
+                onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57"
+                required>
+              <span matPrefix>+91 - </span>
+              <mat-hint align="end">{{providerRegisterPhone.value?.length || 0}}/10</mat-hint>
+            </mat-form-field>
+          </div>
+          <div fxLayout fxLayoutAlign="space-between center">
+              <mat-form-field fxFlex="48%">
+                  <mat-select name="roleName" placeholder="Citizenship" required tabindex="7"
+                    [(ngModel)]="providerDetail.roleName[0]">
+                    <mat-option value="ROLE_PROVIDER_NURSE">SAvings</mat-option>
+                    <mat-option value="ROLE_PROVIDER_CUSTOMER_SERVICE">Current</mat-option>
+                    <mat-option value="ROLE_PROVIDER_GYNECOLOGIST">Loan</mat-option>
+                    <mat-option value="ROLE_PROVIDER_ANDROLOGIST">Premium Savings</mat-option>
+                  </mat-select>
+                </mat-form-field>
+            <mat-form-field fxFlex="48%">
+              <input matInput name="passport" type="text" placeholder="Passport" tabindex="9" required
+                [(ngModel)]="providerDetail.address2">
+            </mat-form-field>
+          </div>
+        </form>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Corporate Details
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <form fxLayoutAlign="center stretch" fxLayout="column" class="auth-form" (keyup.enter)="addProviderUser()">
+          <div fxLayout fxLayoutAlign="space-between center">
+              <mat-form-field fxFlex="48%">
+                <input matInput name="name" type="text" placeholder="Full Name" tabindex="1" required autofocus
+                  [(ngModel)]="providerDetail.firstName">
+              </mat-form-field>
+              <mat-form-field fxFlex="48%">
+                <input matInput name="address" type="text" placeholder="Address" tabindex="2" required
+                  [(ngModel)]="providerDetail.userName">
+              </mat-form-field>
+          </div>
+          <div fxLayout fxLayoutAlign="space-between center">
+            <mat-form-field fxFlex="48%">
+              <input matInput name="name" type="text" placeholder="Legal Structure" tabindex="1" required autofocus
+                [(ngModel)]="providerDetail.firstName">
+            </mat-form-field>
+            <mat-form-field fxFlex="48%">
+              <input matInput name="address" type="text" placeholder="Last Year Revenue" tabindex="2" required
+                [(ngModel)]="providerDetail.userName">
+            </mat-form-field>
+          </div>
+          <div fxLayout fxLayoutAlign="space-between center">
+            <mat-form-field fxFlex="48%">
+              <input matInput name="name" type="text" placeholder="Current Debt" tabindex="1" required autofocus
+                [(ngModel)]="providerDetail.firstName">
+            </mat-form-field>
+            <mat-form-field fxFlex="48%">
+              <mat-select name="roleName" placeholder="Company Age" required tabindex="7"
+                [(ngModel)]="providerDetail.roleName[0]">
+                <mat-option value="2">2+ Years</mat-option>
+                <mat-option value="5">5+ Years</mat-option>
+                <mat-option value="10">10+ Years</mat-option>
+                <mat-option value="15">15+ Years</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </form>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Loan Request Details
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <form fxLayoutAlign="center stretch" fxLayout="column" class="auth-form" (keyup.enter)="addProviderUser()">
+          <div fxLayout fxLayoutAlign="space-between center">
+            <mat-form-field fxFlex="48%">
+              <input matInput name="name" type="text" placeholder="Loan Amount" tabindex="1" required autofocus
+                [(ngModel)]="providerDetail.firstName">
+            </mat-form-field>
+            <mat-form-field fxFlex="48%">
+              <input matInput name="address" type="text" placeholder="Loan Term" tabindex="2" required
+                [(ngModel)]="providerDetail.userName">
+            </mat-form-field>
+          </div>
+          <div fxLayout fxLayoutAlign="space-between center">
+            <mat-form-field fxFlex="48%">
+              <mat-select name="roleName" placeholder="Usage" required tabindex="7"
+                [(ngModel)]="providerDetail.roleName[0]">
+                <mat-option value="ca">Current Assets</mat-option>
+                <mat-option value="dr">Debt Restructuring</mat-option>
+                <mat-option value="ifa">Investment in Fixed Assets</mat-option>
+                <mat-option value="gc">Growth Capital</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </form>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <p *ngIf="registrationFailure" style="color:red;text-align: center;font-size: 16px;">
+        <b>{{ registrationFailureError }}</b></p>
+      <div fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="2%" class="auth-button nav-spacer">
+        <button mat-raised-button color="default" fxFlex="10%" tabindex="15">Cancel</button>
+        <button type="submit" mat-raised-button color="primary" fxFlex="10%" tabindex="14">Submit</button>
+      </div>
+
+  </mat-card-content>
+</mat-card>

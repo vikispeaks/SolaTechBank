@@ -1,0 +1,32 @@
+<mat-toolbar class="mat-elevation-z6 header-custom" color="primary">
+  <mat-toolbar-row fxLayout>
+    <span class="header-custom--title" (click)="gotoAccountSummary()">
+      <img src="../../../assets/img/just_logo.jpg" height="30px" width="30px">Sola Tech Bank</span>
+
+    <button mat-button fxFlex="12%" (click)="gotoLoanRequest()">Loan Request</button>
+    
+    <button mat-button fxFlex="12%" (click)="gotoCheckStatus()">Check Status</button>
+
+    <span class="example-spacer"></span>
+    <button mat-icon-button fxFlex="3%" (click)="openHelpDialog()">
+      <mat-icon class="example-icon">help</mat-icon>
+    </button>
+    <button mat-icon-button fxFlex="3%">
+      <mat-icon class="example-icon">notifications</mat-icon>
+    </button>
+    <button mat-button [matMenuTriggerFor]="menu" class="username-menu">Vignesh Rajendran
+      <i class="material-icons">arrow_drop_down</i>
+    </button>
+    <mat-menu #menu="matMenu" [overlapTrigger]="false" class="custom-menu mat-elevation-z0">
+      <button mat-menu-item (click)="signOut()">
+        <mat-icon class="example-icon">power_settings_new</mat-icon>Sign Out
+      </button>
+    </mat-menu>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-card class="nav-spacer">
+  <mat-card-content>
+    <router-outlet></router-outlet>
+  </mat-card-content>
+</mat-card>
